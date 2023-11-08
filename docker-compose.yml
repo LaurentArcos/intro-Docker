@@ -1,0 +1,12 @@
+# Spécifie la version majeure de docker-compose
+version: '3'
+
+# Section service spécifiant tous les services de notre application
+services:
+  json-server:
+    # On spécifie le nom du container qui sera créé
+    container_name: my_json_server
+    build: 
+      context: .
+    ports:
+      - 80:3000

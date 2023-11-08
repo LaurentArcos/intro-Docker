@@ -1,0 +1,33 @@
+@startuml architecture
+node "Frontend" {
+  component frontoffice [
+    Front office
+    node:lts
+  ]
+  component backoffice [
+    Back office
+    node:lts
+  ]
+}
+
+node "Backend" {
+  component nodejs [
+    NodeJs Express
+    node:lts
+  ]
+  port API
+  API - nodejs
+}
+
+database "Database" {
+  component pgsql [
+    PostgreSQL
+    postgres:16
+  ]
+}
+
+frontoffice --- API
+backoffice --- API
+nodejs --- pgsql
+
+@enduml

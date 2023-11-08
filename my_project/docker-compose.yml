@@ -1,0 +1,29 @@
+# Spécifie la version majeure de docker-compose
+version: '3'
+
+# Section service spécifiant tous les services de notre application
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./backend:/backaynd
+    ports:
+      - 8080:8000
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./frontend:/app
+    ports:
+      - 80:3000
+  postgres:
+    image: postgres:latest
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: mypassword
+    volumes:
+      - ./postgresql/data:/var/lib/postgresql/data
